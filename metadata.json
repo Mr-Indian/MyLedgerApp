@@ -1,0 +1,5 @@
+{
+  "name": "OkLedger - PWA Ledger App",
+  "description": "A blazing-fast, installable PWA that replicates OkCredit’s core flows for small businesses: customer/supplier ledgers, credit/debit entries, statements, and reminders. Built with an Android-first, offline-first approach.",
+  "requestFramePermissions": []
+}

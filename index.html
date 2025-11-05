@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>OkLedger</title>
+    <meta name="description" content="Offline-first ledger PWA for small businesses.">
+    
+    <!-- PWA Manifest -->
+    <!-- In a real build, this would be '/manifest.json' -->
+    <!-- <link rel="manifest" href="manifest.json"> -->
+
+    <!-- Theme Color for Status Bar -->
+    <meta name="theme-color" content="#f9fafb" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#18181b" media="(prefers-color-scheme: dark)">
+
+    <!-- Apple PWA settings -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="OkLedger">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              success: {
+                DEFAULT: 'hsl(142.1 76.2% 36.3%)',
+                foreground: 'hsl(142.1 70.6% 95.3%)',
+              },
+              danger: {
+                DEFAULT: 'hsl(0 72.2% 50.6%)',
+                foreground: 'hsl(0 85.7% 97.3%)',
+              }
+            },
+            keyframes: {
+              'fade-in': {
+                '0%': { opacity: '0' },
+                '100%': { opacity: '1' },
+              },
+              'fade-in-up': {
+                '0%': { opacity: '0', transform: 'translateY(10px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+            },
+            animation: {
+              'fade-in': 'fade-in 0.3s ease-out',
+              'fade-in-fast': 'fade-in 0.2s ease-out',
+              'fade-in-up': 'fade-in-up 0.3s ease-out forwards',
+            }
+          }
+        }
+      }
+    </script>
+    <style type="text/css">
+      /* Custom scrollbar for better aesthetics */
+      ::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 3px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+      }
+      /* Fix for 100dvh on mobile */
+      body {
+        height: 100vh;
+        height: 100dvh;
+      }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "dexie": "https://aistudiocdn.com/dexie@^4.2.1",
+    "dexie-react-hooks": "https://aistudiocdn.com/dexie-react-hooks@^4.2.0"
+  }
+}
+</script>
+</head>
+<body class="bg-gray-50 dark:bg-zinc-900 text-zinc-900 dark:text-zinc-50 antialiased">
+    <div id="root" class="h-full"></div>
+    <script type="module" src="/index.tsx"></script>
+</body>
+</html>
