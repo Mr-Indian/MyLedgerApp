@@ -128,7 +128,8 @@ const BottomNav: React.FC<{ activePage: Page; onNavigate: (page: Page) => void }
                 : 'text-gray-500 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400'
             }`}
           >
-            {React.cloneElement(item.icon, { className: 'w-6 h-6' })}
+            {/* FIX: Cast the icon element to inform TypeScript it accepts a `className` prop, resolving an overload error with React.cloneElement. */}
+            {React.cloneElement(item.icon as React.ReactElement<{className?: string}>, { className: 'w-6 h-6' })}
             <span className="text-xs font-medium">{item.label}</span>
           </button>
         ))}
@@ -161,11 +162,11 @@ const DropdownMenu: React.FC<{ trigger: React.ReactNode; children: React.ReactNo
       {isOpen && (
         <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-zinc-800 rounded-md shadow-lg z-20 ring-1 ring-black dark:ring-zinc-700 ring-opacity-5 animate-fade-in-fast">
           <div className="py-1" role="menu" aria-orientation="vertical">
-            {/* FIX: After `isValidElement`, child.props is `unknown`. Cast to a known shape to allow spreading and accessing `onClick`. */}
             {React.Children.map(children, child => {
               if (React.isValidElement(child)) {
+                // FIX: Cast `child` to `React.ReactElement<any>` to inform TypeScript that it can accept the new `onClick` prop, resolving the overload error.
                 const props = child.props as { onClick?: () => void; [key: string]: any };
-                return React.cloneElement(child, {
+                return React.cloneElement(child as React.ReactElement<any>, {
                   ...props,
                   onClick: () => {
                     props.onClick?.();
